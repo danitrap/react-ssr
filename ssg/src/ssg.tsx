@@ -4,7 +4,8 @@ import { App } from "../../client/src/App";
 import fs from "fs";
 
 
-const app = ReactDOMServer.renderToString(<App source="SSG" />);
+const props = { source: "SSG" };
+const app = ReactDOMServer.renderToString(<App {...props} />);
 
 const html = `
     <html lang="en">
@@ -13,7 +14,7 @@ const html = `
     </head>
     <body>
         <div id="root">${app}</div>
-        <script>config = {source: "SSG"};</script>
+        <script id="props" type="application/json">${JSON.stringify(props)}</script>
     </body>
     </html>
 `

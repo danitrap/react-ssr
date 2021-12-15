@@ -6,7 +6,8 @@ import { App } from "../../client/src/App";
 const app = express();
 
 app.get('/', (req, res) => {
-    const app = ReactDOMServer.renderToString(<App source="SSR" />);
+    const props = { source: "SSR" };
+    const app = ReactDOMServer.renderToString(<App {...props} />);
 
     const html = `
         <html lang="en">
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
         </head>
         <body>
             <div id="root">${app}</div>
-            <script>config = {source: "SSR"};</script>
+            <script id="props" type="application/json">${JSON.stringify(props)}</script>
         </body>
         </html>
     `

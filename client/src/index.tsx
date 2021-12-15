@@ -2,11 +2,7 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { App } from './App';
 
-declare global {
-    interface Window {
-        config: { source: string };
-    }
-}
+const props = JSON.parse(document.getElementById("props").innerText);
 
-ReactDOM.hydrate(<App source={window.config.source} />, document.getElementById('root'));
+ReactDOM.hydrate(<App {...props} />, document.getElementById('root'));
 

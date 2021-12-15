@@ -4,7 +4,7 @@ export const App: React.FC<{ source: string }> = ({ source }) => {
     const [clientMessage, setClientMessage] = useState("");
     
     useEffect(() => {
-        setClientMessage("Hello From React");
+        setClientMessage("Hello From React useEffect Hook");
     }, [])
 
     return <>
